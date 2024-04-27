@@ -1,14 +1,16 @@
 from django import forms
-from .models import UserModel
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 import re
+
+User = get_user_model()
 
 
 class UserForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = UserModel
+        model = User
         fields = '__all__'
 
     def clean_confirm_password(self):

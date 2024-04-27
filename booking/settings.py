@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
 
     'booking_system',
-    'users'
+    'users',
+    'rent_house'
 ]
 
 MIDDLEWARE = [
