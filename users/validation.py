@@ -9,3 +9,7 @@ def validate_password(password):
         raise ValidationError('Password must contain at least 1 upper case character')
     elif not re.match('.*[a-z]', password):
         raise ValidationError("Your password must contain at least 1 lower case character.")
+
+
+def validate_phone_number(phone_number):
+    pass
