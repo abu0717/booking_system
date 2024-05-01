@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import RentHouse
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -21,7 +22,13 @@ def post_house(request):
 
 def get_house(request):
     houses = RentHouse.objects.all()
-    return render(request, '', context={'houses': houses})
+    p = Paginator(houses, 50)
+    page_number = request.GET.get('page')
+    page_obj = p.get_page(page_number)
+    return render(request, '', {
+        'houses': houses,
+        'page_obj': page_obj
+    })
 
 
 def retrieve_house(request, pk):
